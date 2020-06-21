@@ -1,0 +1,28 @@
+{
+  "name": "loudislav/debatematch",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "loudislav",
+      "email": "loudislav@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "DebateMatch\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DebateMatch\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "^7.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~8.5"
+  }
+}
