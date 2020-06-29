@@ -10,11 +10,18 @@ class Team
      * @var string
      */
     private $name;
-
     /**
      * @var Institution
      */
     private $institution;
+    /**
+     * @var int
+     */
+    private $totalWins = 0;
+    /**
+     * @var int
+     */
+    private $totalBallots = 0;
 
     public function __construct(string $name, Institution $institution)
     {
@@ -36,5 +43,21 @@ class Team
     public function getInstitution(): Institution
     {
         return $this->institution;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalWins(): int
+    {
+        return $this->totalWins;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalBallots(): int
+    {
+        return $this->totalBallots;
     }
 }

@@ -7,7 +7,7 @@ namespace DebateMatch\DataObject;
 class InstitutionCollection
 {
     /**
-     * @var array
+     * @var Institution[]
      */
     private $institutions = array();
 

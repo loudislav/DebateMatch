@@ -11,6 +11,8 @@ class RatingCalculator
 {
     // TODO: create YAML config file with values
     private const SAME_INSTITUTION = 1;
+    private const WINS_DIFFERENCE_MULTIPLIER = 2;
+    private const BALLOTS_DIFFERENCE_MULTIPLIER = 1;
 
     /**
      * // TODO: maybe can be static
@@ -23,6 +25,7 @@ class RatingCalculator
         $rating = 0;
 
         if ($this->areFromSameInstitution($affirmative, $negative)) $rating += self::SAME_INSTITUTION;
+        $rating += $this->getResultDifferenceRating($affirmative, $negative);
 
         return $rating;
     }
@@ -39,6 +42,21 @@ class RatingCalculator
             return true;
         }
         return false;
+    }
+
+    /**
+     * @param Team $affirmative
+     * @param Team $negative
+     * @return int
+     */
+    private function getResultDifferenceRating(Team $affirmative, Team $negative): int
+    {
+        $winsDifference = abs($affirmative->getTotalWins() - $negative->getTotalWins());
+        $ballotsDifference = abs($affirmative->getTotalBallots() - $negative->getTotalBallots());
+
+        // TODO: add speaker points difference
+        return $winsDifference * self::WINS_DIFFERENCE_MULTIPLIER
+            + $ballotsDifference * self::BALLOTS_DIFFERENCE_MULTIPLIER;
     }
 
 }

@@ -12,17 +12,12 @@ class Matrix
      * @var array
      */
     private $matrix = array();
-    /**
-     * @var RatingCalculator
-     */
-    private $ratingCalculator;
 
     /**
      * @param array $teams
      */
     public function __construct(array $teams)
     {
-        $this->ratingCalculator = new RatingCalculator();
         $this->create($teams);
     }
 
@@ -41,13 +36,7 @@ class Matrix
                     $this->matrix[$counter][] = null;
                 }
                 else {
-                    // TODO: Class Matching
-                    $opponent = array(
-                        'affirmative' => $affirmative,
-                        'negative' => $negative,
-                        'rating' => $this->ratingCalculator->calculate($affirmative, $negative)
-                    );
-                    $this->matrix[$counter][] = $opponent;
+                    $this->matrix[$counter][] = new Match($affirmative, $negative);
                 }
             }
             $counter++;
@@ -86,13 +75,13 @@ class Matrix
     }
 
     /**
-     * @param array $a
-     * @param array $b
+     * @param Match $a
+     * @param Match $b
      * @return int
      */
-    private function compareRatings(array $a, array $b): int
+    private function compareRatings(Match $a, Match $b): int
     {
-        if ($a['rating'] == $b['rating']) return 0;
-        return ($a['rating'] < $b['rating']) ? -1 : 1;
+        if ($a->getRating() == $b->getRating()) return 0;
+        return ($a->getRating() < $b->getRating()) ? -1 : 1;
     }
 }
