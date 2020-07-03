@@ -4,26 +4,16 @@ declare(strict_types=1);
 
 namespace DebateMatch\DataObject;
 
-use DebateMatch\RatingCalculator;
-
-class Match
+abstract class Match
 {
     /**
-     * @var RatingCalculator
+     * @var Team
      */
-    private $ratingCalculator;
+    protected $affirmative;
     /**
      * @var Team
      */
-    private $affirmative;
-    /**
-     * @var Team
-     */
-    private $negative;
-    /**
-     * @var int
-     */
-    private $rating;
+    protected $negative;
 
     /**
      * Match constructor.
@@ -32,11 +22,8 @@ class Match
      */
     public function __construct(Team $affirmative, Team $negative)
     {
-        $this->ratingCalculator = new RatingCalculator();
-
         $this->affirmative = $affirmative;
         $this->negative = $negative;
-        $this->rating = $this->ratingCalculator->calculate($affirmative, $negative);
     }
 
     /**
@@ -53,13 +40,5 @@ class Match
     public function getNegative(): Team
     {
         return $this->negative;
-    }
-
-    /**
-     * @return int
-     */
-    public function getRating(): int
-    {
-        return $this->rating;
     }
 }

@@ -6,24 +6,60 @@ include_once __DIR__ . '/../vendor/autoload.php';
 $data = array(
     array(
         'name' => 'Team A',
-        'institutionName' => 'Institution 1'
+        'institutionName' => 'Institution 1',
+        'previousMatches' => array(
+            array(
+                'affirmative' => 'Team A',
+                'negative' => 'Team C',
+                'roundNumber' => 1,
+                'affirmativeWinner' => true,
+                'unanimousResult' => true
+            )
+        )
     ),
     array(
         'name' => 'Team B',
-        'institutionName' => 'Institution 1'
+        'institutionName' => 'Institution 1',
+        'previousMatches' => array(
+            array(
+                'affirmative' => 'Team B',
+                'negative' => 'Team D',
+                'roundNumber' => 1,
+                'affirmativeWinner' => false,
+                'unanimousResult' => false
+            )
+        )
     ),
     array(
         'name' => 'Team C',
-        'institutionName' => 'Institution 2'
+        'institutionName' => 'Institution 2',
+        'previousMatches' => array(
+            array(
+                'affirmative' => 'Team A',
+                'negative' => 'Team C',
+                'roundNumber' => 1,
+                'affirmativeWinner' => true,
+                'unanimousResult' => true
+            )
+        )
     ),
     array(
         'name' => 'Team D',
-        'institutionName' => 'Institution 3'
+        'institutionName' => 'Institution 3',
+        'previousMatches' => array(
+            array(
+                'affirmative' => 'Team B',
+                'negative' => 'Team D',
+                'roundNumber' => 1,
+                'affirmativeWinner' => false,
+                'unanimousResult' => false
+            )
+        )
     )
 );
 
 $matchingProcessor = new \DebateMatch\MatchingProcessor();
-$matchingSet = $matchingProcessor->process($data);
+$matchingSet = $matchingProcessor->process($data, 1);
 
 echo '<br><table border="1">';
 foreach ($matchingSet as $roundMatching)

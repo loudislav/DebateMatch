@@ -14,17 +14,21 @@ class Matrix
     private $matrix = array();
 
     /**
+     * Matrix constructor.
      * @param array $teams
+     * @param int|null $oppositeSideRoundNumber
      */
-    public function __construct(array $teams)
+    public function __construct(array $teams, int $oppositeSideRoundNumber = null)
     {
-        $this->create($teams);
+        $this->create($teams, $oppositeSideRoundNumber);
     }
 
     /**
+     * TODO: merge with constructor
      * @param array $teams
+     * @param int|null $oppositeSideRoundNumber
      */
-    private function create(array $teams)
+    private function create(array $teams, int $oppositeSideRoundNumber = null)
     {
         $counter = 0;
         foreach ($teams as $affirmative)
@@ -36,7 +40,7 @@ class Matrix
                     $this->matrix[$counter][] = null;
                 }
                 else {
-                    $this->matrix[$counter][] = new Match($affirmative, $negative);
+                    $this->matrix[$counter][] = new ProposedMatch($affirmative, $negative, $oppositeSideRoundNumber);
                 }
             }
             $counter++;

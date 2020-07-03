@@ -49,4 +49,7 @@ class RatingCalculatorTest extends TestCase
 
         self::assertSame(1, $rating);
     }
+
+    // TODO: testCalculateRound2BothWinners & testCalculateRound2WinnerLoser
+    // TODO: testRepeatSide
 }

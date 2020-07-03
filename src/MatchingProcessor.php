@@ -21,14 +21,23 @@ class MatchingProcessor
         $this->teamFactory = new TeamFactory();
     }
 
-    public function process(array $data): array
+    public function process(array $data, int $oppositeSideRoundNumber = null): array
     {
         $teams = array();
         foreach ($data as $line) {
             $teams[] = $this->teamFactory->create($line);
         }
+        for ($i = 0; $i < count($teams); $i++) {
+            if (isset($data[$i]['previousMatches']))
+            {
+                foreach ($data[$i]['previousMatches'] as $match)
+                {
+                    $this->teamFactory->addPreviousMatches($match, $teams[$i]);
+                }
+            }
+        }
         // TODO: continue
-        $matrix = new Matrix($teams);
+        $matrix = new Matrix($teams, $oppositeSideRoundNumber);
         $proposedRoundMatchings = $this->getProposedRoundMatchings($matrix->getList(), count($teams));
         return $proposedRoundMatchings;
     }

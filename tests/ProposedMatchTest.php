@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace DebateMatch\Tests;
 
-use DebateMatch\DataObject\Match,
-    DebateMatch\Factory\TeamFactory;
+use DebateMatch\Factory\TeamFactory,
+    DebateMatch\DataObject\ProposedMatch;
 use PHPUnit\Framework\TestCase;
 
-class MatchTest extends TestCase
+class ProposedMatchTest extends TestCase
 {
     public function testCreate(): void
     {
@@ -24,7 +24,7 @@ class MatchTest extends TestCase
         $teamA = $factory->create($testDataA);
         $teamB = $factory->create($testDataB);
 
-        $match = new Match($teamA, $teamB);
+        $match = new ProposedMatch($teamA, $teamB);
 
         self::assertSame('Team A', $match->getAffirmative()->getName());
         self::assertSame('Team B', $match->getNegative()->getName());
