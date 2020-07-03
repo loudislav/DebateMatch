@@ -14,21 +14,11 @@ class Matrix
     private $matrix = array();
 
     /**
-     * Matrix constructor.
-     * @param array $teams
+     * Create Matrix of ProposedMatches with affirmative lines and negative columns.
+     * @param Team[] $teams
      * @param int|null $oppositeSideRoundNumber
      */
     public function __construct(array $teams, int $oppositeSideRoundNumber = null)
-    {
-        $this->create($teams, $oppositeSideRoundNumber);
-    }
-
-    /**
-     * TODO: merge with constructor
-     * @param array $teams
-     * @param int|null $oppositeSideRoundNumber
-     */
-    private function create(array $teams, int $oppositeSideRoundNumber = null)
     {
         $counter = 0;
         foreach ($teams as $affirmative)
@@ -56,8 +46,8 @@ class Matrix
     }
 
     /**
-     * TODO: test
-     * @return array
+     * Convert Matrix to a list of ProposedMatches ordered by rating.
+     * @return ProposedMatch[]
      */
     public function getList(): array
     {
@@ -79,11 +69,11 @@ class Matrix
     }
 
     /**
-     * @param Match $a
-     * @param Match $b
+     * @param ProposedMatch $a
+     * @param ProposedMatch $b
      * @return int
      */
-    private function compareRatings(Match $a, Match $b): int
+    private function compareRatings(ProposedMatch $a, ProposedMatch $b): int
     {
         if ($a->getRating() == $b->getRating()) return 0;
         return ($a->getRating() < $b->getRating()) ? -1 : 1;
