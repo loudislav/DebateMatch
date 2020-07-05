@@ -54,6 +54,19 @@ class MatchingProcessor
             }
             array_shift($listOfMatches);
         }
-        return $proposedRoundMatchings; // TODO: maybe order by totalRanking first
+
+        usort($proposedRoundMatchings, array($this, "compareTotalRatings"));
+        return $proposedRoundMatchings;
+    }
+
+    /**
+     * @param RoundMatching $a
+     * @param RoundMatching $b
+     * @return int
+     */
+    private function compareTotalRatings(RoundMatching $a, RoundMatching $b): int
+    {
+        if ($a->getTotalRating() === $b->getTotalRating()) return 0;
+        return ($a->getTotalRating() < $b->getTotalRating()) ? -1 : 1;
     }
 }
