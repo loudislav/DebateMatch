@@ -9,6 +9,7 @@ use DebateMatch\DataObject\Matrix;
 use DebateMatch\DataObject\RoundMatching;
 use DebateMatch\Factory\TeamFactory;
 
+// TODO: refactor
 class MatchingProcessor
 {
     /**
@@ -30,13 +31,10 @@ class MatchingProcessor
         for ($i = 0; $i < count($teams); $i++) {
             if (isset($data[$i]['previousMatches']))
             {
-                foreach ($data[$i]['previousMatches'] as $match)
-                {
-                    $this->teamFactory->addPreviousMatches($match, $teams[$i]);
-                }
+                $this->teamFactory->addPreviousMatches($data[$i]['previousMatches'], $teams[$i]);
             }
         }
-        // TODO: continue
+
         $matrix = new Matrix($teams, $oppositeSideRoundNumber);
         $proposedRoundMatchings = $this->getProposedRoundMatchings($matrix->getList(), count($teams));
         return $proposedRoundMatchings;

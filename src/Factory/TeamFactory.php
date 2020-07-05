@@ -51,15 +51,19 @@ class TeamFactory
      */
     public function addPreviousMatches(array $data, Team $currentTeam): void
     {
-        $previousMatch = new PreviousMatch(
-            $this->teamCollection->getTeamByName($data['affirmative']),
-            $this->teamCollection->getTeamByName($data['negative']),
-            $data['roundNumber'],
-            $data['affirmativeWinner'],
-            $data['unanimousResult']
-        );
+        foreach ($data as $item)
+        {
+            $previousMatch = new PreviousMatch
+            (
+                $this->teamCollection->getTeamByName($item['affirmative']),
+                $this->teamCollection->getTeamByName($item['negative']),
+                $item['roundNumber'],
+                $item['affirmativeWinner'],
+                $item['unanimousResult']
+            );
 
-        $currentTeam->addPreviousMatch($previousMatch);
+            $currentTeam->addPreviousMatch($previousMatch);
+        }
     }
 
     /**

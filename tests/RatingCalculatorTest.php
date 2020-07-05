@@ -10,7 +10,13 @@ use PHPUnit\Framework\TestCase;
 
 class RatingCalculatorTest extends TestCase
 {
-    public function testCalculateRound1DifferentInstitutions(): void
+    protected $teamFactory;
+    protected $ratingCalculator;
+    protected $teamA;
+    protected $teamB;
+    protected $teamC;
+
+    protected function setUp(): void
     {
         $testDataA = array(
             'name' => 'Team A',
@@ -18,38 +24,96 @@ class RatingCalculatorTest extends TestCase
         );
         $testDataB = array(
             'name' => 'Team B',
+            'institutionName' => 'Institution 1',
+            'previousMatches' => array(
+                array(
+                    'affirmative' => 'Team A',
+                    'negative' => 'Team B',
+                    'roundNumber' => 1,
+                    'affirmativeWinner' => true,
+                    'unanimousResult' => true
+                )
+            )
+        );
+        $testDataC = array(
+            'name' => 'Team C',
             'institutionName' => 'Institution 2'
         );
-        $factory = new TeamFactory();
-        $teamA = $factory->create($testDataA);
-        $teamB = $factory->create($testDataB);
-        $ratingCalculator = new RatingCalculator();
 
-        $rating = $ratingCalculator->calculate($teamA, $teamB);
+        $this->teamFactory = new TeamFactory();
+        $this->teamA = $this->teamFactory->create($testDataA);
+        $this->teamB = $this->teamFactory->create($testDataB);
+        $this->teamC = $this->teamFactory->create($testDataC);
+        $this->ratingCalculator = new RatingCalculator();
+    }
+
+    public function testCalculateRound1DifferentInstitutions(): void
+    {
+        $rating = $this->ratingCalculator->calculate($this->teamA, $this->teamC);
 
         self::assertSame(0, $rating);
     }
 
     public function testCalculateRound1SameInstitutions(): void
     {
-        $testDataA = array(
-            'name' => 'Team A',
-            'institutionName' => 'Institution 1'
-        );
-        $testDataB = array(
-            'name' => 'Team B',
-            'institutionName' => 'Institution 1'
-        );
-        $factory = new TeamFactory();
-        $teamA = $factory->create($testDataA);
-        $teamB = $factory->create($testDataB);
-        $ratingCalculator = new RatingCalculator();
-
-        $rating = $ratingCalculator->calculate($teamA, $teamB);
+        $rating = $this->ratingCalculator->calculate($this->teamA, $this->teamB);
 
         self::assertSame(1, $rating);
     }
 
-    // TODO: testCalculateRound2BothWinners & testCalculateRound2WinnerLoser
-    // TODO: testRepeatSide
+    public function testCalculateRound2BothWinners(): void
+    {
+        $previousMatchA = array(
+            array(
+                'affirmative' => 'Team A',
+                'negative' => 'Team B',
+                'roundNumber' => 1,
+                'affirmativeWinner' => true,
+                'unanimousResult' => true
+            )
+        );
+        $previousMatchC = array(
+            array(
+                'affirmative' => 'Team C',
+                'negative' => 'Team B',
+                'roundNumber' => 1,
+                'affirmativeWinner' => true,
+                'unanimousResult' => true
+            )
+        );
+
+        $this->teamFactory->addPreviousMatches($previousMatchA, $this->teamA);
+        $this->teamFactory->addPreviousMatches($previousMatchC, $this->teamC);
+        $rating = $this->ratingCalculator->calculate($this->teamA, $this->teamC);
+
+        self::assertSame(0, $rating);
+    }
+
+    public function testCalculateRound2WinnerLoser(): void
+    {
+        $previousMatchA = array(
+            array(
+                'affirmative' => 'Team A',
+                'negative' => 'Team B',
+                'roundNumber' => 1,
+                'affirmativeWinner' => false,
+                'unanimousResult' => true
+            )
+        );
+        $previousMatchC = array(
+            array(
+                'affirmative' => 'Team C',
+                'negative' => 'Team B',
+                'roundNumber' => 1,
+                'affirmativeWinner' => true,
+                'unanimousResult' => true
+            )
+        );
+
+        $this->teamFactory->addPreviousMatches($previousMatchA, $this->teamA);
+        $this->teamFactory->addPreviousMatches($previousMatchC, $this->teamC);
+        $rating = $this->ratingCalculator->calculate($this->teamA, $this->teamC);
+
+        self::assertSame(5, $rating);
+    }
 }
