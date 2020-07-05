@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace DebateMatch\DataObject;
 
-use DebateMatch\RatingCalculator;
-
 class RoundMatching
 {
     /**
@@ -23,7 +21,7 @@ class RoundMatching
 
     /**
      * RoundMatching constructor.
-     * @param Match[] $listOfAllPossibleMatches
+     * @param ProposedMatch[] $listOfAllPossibleMatches
      */
     public function __construct(array $listOfAllPossibleMatches)
     {
@@ -38,9 +36,9 @@ class RoundMatching
     }
 
     /**
-     * @param Match $match
+     * @param ProposedMatch $match
      */
-    private function addMatch(Match $match): void
+    private function addMatch(ProposedMatch $match): void
     {
         $this->matches[] = $match;
         $this->totalRating += $match->getRating();
@@ -49,11 +47,11 @@ class RoundMatching
     }
 
     /**
-     * @return array|Match[]
+     * @return ProposedMatch[]
      */
     public function getAllMatches(): array
     {
-        return $this->matches; // TODO: maybe order by rating first
+        return $this->matches;
     }
 
     /**
