@@ -42,7 +42,6 @@ class Team
     }
 
     /**
-     * TODO: test
      * @param PreviousMatch $previousMatch
      */
     public function addPreviousMatch(PreviousMatch $previousMatch): void
@@ -131,7 +130,6 @@ class Team
     }
 
     /**
-     * // TODO: test
      * @param Team $opponent
      * @return bool
      */
@@ -145,14 +143,18 @@ class Team
     }
 
     /**
-     * TODO: test
      * @param int $oppositeSiteRoundNumber
      * @param bool $affirmative
      * @return bool
      */
     public function wasSideBefore(int $oppositeSiteRoundNumber, bool $affirmative): bool
     {
+        if (!isset($this->previousMatches[$oppositeSiteRoundNumber]))
+        {
+            return false;
+        }
         $oppositeSiteRound = $this->previousMatches[$oppositeSiteRoundNumber];
+
         if ($affirmative and $oppositeSiteRound->getAffirmative() === $this) return true;
         elseif ($affirmative and $oppositeSiteRound->getAffirmative() !== $this) return false;
         elseif (!$affirmative and $oppositeSiteRound->getAffirmative() === $this) return false;
