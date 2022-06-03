@@ -19,7 +19,7 @@ class Team
      */
     private $institution;
     /**
-     * @var PreviousMatch[]
+     * @var PreviousGame[]
      */
     private $previousMatches = array();
     /**
@@ -42,9 +42,9 @@ class Team
     }
 
     /**
-     * @param PreviousMatch $previousMatch
+     * @param PreviousGame $previousMatch
      */
-    public function addPreviousMatch(PreviousMatch $previousMatch): void
+    public function addPreviousMatch(PreviousGame $previousMatch): void
     {
         $round = $previousMatch->getRoundNumber();
         $this->previousMatches[$round] = $previousMatch;
@@ -121,9 +121,9 @@ class Team
     }
 
     /**
-     * @param PreviousMatch $previousMatch
+     * @param PreviousGame $previousMatch
      */
-    private function addPreviousOpponent(PreviousMatch $previousMatch): void
+    private function addPreviousOpponent(PreviousGame $previousMatch): void
     {
         if ($this !== $previousMatch->getAffirmative()) $this->previousOpponents[] = $previousMatch->getAffirmative();
         else $this->previousOpponents[] = $previousMatch->getNegative();

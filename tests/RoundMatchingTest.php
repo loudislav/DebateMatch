@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DebateMatch\Tests;
 
-use DebateMatch\DataObject\ProposedMatch,
+use DebateMatch\DataObject\ProposedGame,
     DebateMatch\Factory\TeamFactory,
     DebateMatch\DataObject\RoundMatching;
 use PHPUnit\Framework\TestCase;
@@ -25,7 +25,7 @@ class RoundMatchingTest extends TestCase
         $teamA = $factory->create($testDataA);
         $teamB = $factory->create($testDataB);
 
-        $match = new ProposedMatch($teamA, $teamB);
+        $match = new ProposedGame($teamA, $teamB);
         $roundMatching = new RoundMatching(array($match));
 
         self::assertSame(1, count($roundMatching->getAllMatches()));
@@ -46,7 +46,7 @@ class RoundMatchingTest extends TestCase
         $teamA = $factory->create($testDataA);
         $teamB = $factory->create($testDataB);
 
-        $match = new ProposedMatch($teamA, $teamB);
+        $match = new ProposedGame($teamA, $teamB);
         $roundMatching = new RoundMatching(array($match));
 
         self::assertTrue($roundMatching->isComplete(2));
@@ -66,7 +66,7 @@ class RoundMatchingTest extends TestCase
         $teamA = $factory->create($testDataA);
         $teamB = $factory->create($testDataB);
 
-        $match = new ProposedMatch($teamA, $teamB);
+        $match = new ProposedGame($teamA, $teamB);
         $roundMatching = new RoundMatching(array($match));
 
         self::assertFalse($roundMatching->isComplete(4));

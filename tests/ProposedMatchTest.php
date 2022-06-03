@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace DebateMatch\Tests;
 
 use DebateMatch\Factory\TeamFactory,
-    DebateMatch\DataObject\ProposedMatch;
+    DebateMatch\DataObject\ProposedGame;
 use PHPUnit\Framework\TestCase;
 
 class ProposedMatchTest extends TestCase
@@ -24,7 +24,7 @@ class ProposedMatchTest extends TestCase
         $teamA = $factory->create($testDataA);
         $teamB = $factory->create($testDataB);
 
-        $match = new ProposedMatch($teamA, $teamB);
+        $match = new ProposedGame($teamA, $teamB);
 
         self::assertSame('Team A', $match->getAffirmative()->getName());
         self::assertSame('Team B', $match->getNegative()->getName());

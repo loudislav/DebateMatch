@@ -30,7 +30,7 @@ class Matrix
                     $this->matrix[$counter][] = null;
                 }
                 else {
-                    $this->matrix[$counter][] = new ProposedMatch($affirmative, $negative, $oppositeSideRoundNumber);
+                    $this->matrix[$counter][] = new ProposedGame($affirmative, $negative, $oppositeSideRoundNumber);
                 }
             }
             $counter++;
@@ -47,7 +47,7 @@ class Matrix
 
     /**
      * Convert Matrix to a list of ProposedMatches ordered by rating.
-     * @return ProposedMatch[]
+     * @return ProposedGame[]
      */
     public function getList(): array
     {
@@ -69,11 +69,11 @@ class Matrix
     }
 
     /**
-     * @param ProposedMatch $a
-     * @param ProposedMatch $b
+     * @param ProposedGame $a
+     * @param ProposedGame $b
      * @return int
      */
-    private function compareRatings(ProposedMatch $a, ProposedMatch $b): int
+    private function compareRatings(ProposedGame $a, ProposedGame $b): int
     {
         if ($a->getRating() == $b->getRating()) return 0;
         return ($a->getRating() < $b->getRating()) ? -1 : 1;

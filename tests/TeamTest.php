@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace DebateMatch\Tests;
 
 use DebateMatch\DataObject\Institution,
-    DebateMatch\DataObject\PreviousMatch,
+    DebateMatch\DataObject\PreviousGame,
     DebateMatch\DataObject\Team;
 use PHPUnit\Framework\TestCase;
 
@@ -29,7 +29,7 @@ class TeamTest extends TestCase
 
     public function testAddPreviousMatchWon(): void
     {
-        $previousMatch = new PreviousMatch($this->teamA, $this->teamB, 1, true, true);
+        $previousMatch = new PreviousGame($this->teamA, $this->teamB, 1, true, true);
         $this->teamA->addPreviousMatch($previousMatch);
 
         self::assertSame(1, $this->teamA->getTotalWins());
@@ -38,7 +38,7 @@ class TeamTest extends TestCase
 
     public function testAddPreviousMatchLost(): void
     {
-        $previousMatch = new PreviousMatch($this->teamA, $this->teamB, 1, false, false);
+        $previousMatch = new PreviousGame($this->teamA, $this->teamB, 1, false, false);
         $this->teamA->addPreviousMatch($previousMatch);
 
         self::assertSame(0, $this->teamA->getTotalWins());
@@ -47,7 +47,7 @@ class TeamTest extends TestCase
 
     public function testHaveMetBefore(): void
     {
-        $previousMatch = new PreviousMatch($this->teamA, $this->teamB, 1, true, true);
+        $previousMatch = new PreviousGame($this->teamA, $this->teamB, 1, true, true);
         $this->teamA->addPreviousMatch($previousMatch);
 
         self::assertTrue($this->teamA->haveMetTeamBefore($this->teamB));
@@ -60,7 +60,7 @@ class TeamTest extends TestCase
 
     public function testWasSideBeforeAffirmative(): void
     {
-        $previousMatch = new PreviousMatch($this->teamA, $this->teamB, 1, true, true);
+        $previousMatch = new PreviousGame($this->teamA, $this->teamB, 1, true, true);
         $this->teamA->addPreviousMatch($previousMatch);
 
         self::assertTrue($this->teamA->wasSideBefore(1, true));
@@ -68,7 +68,7 @@ class TeamTest extends TestCase
 
     public function testWasSideBeforeNegative(): void
     {
-        $previousMatch = new PreviousMatch($this->teamA, $this->teamB, 1, true, true);
+        $previousMatch = new PreviousGame($this->teamA, $this->teamB, 1, true, true);
         $this->teamB->addPreviousMatch($previousMatch);
 
         self::assertTrue($this->teamB->wasSideBefore(1, false));
@@ -81,7 +81,7 @@ class TeamTest extends TestCase
 
     public function testWasOtherSideBefore(): void
     {
-        $previousMatch = new PreviousMatch($this->teamA, $this->teamB, 1, true, true);
+        $previousMatch = new PreviousGame($this->teamA, $this->teamB, 1, true, true);
         $this->teamA->addPreviousMatch($previousMatch);
 
         self::assertFalse($this->teamA->wasSideBefore(1, false));

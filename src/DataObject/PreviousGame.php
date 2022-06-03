@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DebateMatch\DataObject;
 
-class PreviousMatch extends Match
+class PreviousGame extends Game
 {
     /**
      * @var int
@@ -20,7 +20,7 @@ class PreviousMatch extends Match
     private $unanimousResult;
 
     /**
-     * PreviousMatch constructor.
+     * PreviousGame constructor.
      * @param Team $affirmative
      * @param Team $negative
      */

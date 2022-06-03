@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace DebateMatch\DataObject;
 
-abstract class Match
+abstract class Game
 {
     /**
      * @var Team
      */
-    protected $affirmative;
+    protected Team $affirmative;
     /**
      * @var Team
      */
-    protected $negative;
+    protected Team $negative;
 
     /**
-     * Match constructor.
+     * Game constructor.
      * @param Team $affirmative
      * @param Team $negative
      */

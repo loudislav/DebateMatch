@@ -6,7 +6,7 @@ namespace DebateMatch\Factory;
 
 use DebateMatch\DataObject\Institution;
 use DebateMatch\DataObject\InstitutionCollection;
-use DebateMatch\DataObject\PreviousMatch;
+use DebateMatch\DataObject\PreviousGame;
 use DebateMatch\DataObject\Team;
 use DebateMatch\DataObject\TeamCollection;
 
@@ -53,7 +53,7 @@ class TeamFactory
     {
         foreach ($data as $item)
         {
-            $previousMatch = new PreviousMatch
+            $previousMatch = new PreviousGame
             (
                 $this->teamCollection->getTeamByName($item['affirmative']),
                 $this->teamCollection->getTeamByName($item['negative']),

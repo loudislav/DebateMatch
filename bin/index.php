@@ -3,7 +3,9 @@
 include_once __DIR__ . '/../vendor/autoload.php';
 
 //$data = json_decode(file_get_contents(__DIR__ . '/../test-data-round-1.json'));
-/*$data = array(
+
+/** Začátek testovacích dat */
+$data = array(
     array(
         'name' => 'Team A',
         'institutionName' => 'Institution 1',
@@ -56,8 +58,11 @@ include_once __DIR__ . '/../vendor/autoload.php';
             )
         )
     )
-);*/
+);
+/** Konec testovacích dat */
 
+/** Začátek načítání z greyboxu */
+/*
 $gb = file_get_contents('https://debatovani.cz/greybox/?page=turnaj&turnaj_id=244');
 $gbSplit = preg_split('/\<h2\>(.*)\<\/h2\>/m', $gb);
 $lines = preg_split('/\<tr\>/', $gbSplit[1]);
@@ -114,6 +119,8 @@ for ($i = 28; $i < count($debateLines); $i++)
 }
 
 var_dump($data);
+*/
+/** Konec načítání z greyboxu */
 
 $matchingProcessor = new \DebateMatch\MatchingProcessor();
 $matchingSet = $matchingProcessor->process($data, 1);

@@ -7,7 +7,7 @@ namespace DebateMatch\DataObject;
 class RoundMatching
 {
     /**
-     * @var Match[]
+     * @var Game[]
      */
     private $matches = array();
     /**
@@ -21,7 +21,7 @@ class RoundMatching
 
     /**
      * RoundMatching constructor.
-     * @param ProposedMatch[] $listOfAllPossibleMatches
+     * @param ProposedGame[] $listOfAllPossibleMatches
      */
     public function __construct(array $listOfAllPossibleMatches)
     {
@@ -36,9 +36,9 @@ class RoundMatching
     }
 
     /**
-     * @param ProposedMatch $match
+     * @param ProposedGame $match
      */
-    private function addMatch(ProposedMatch $match): void
+    private function addMatch(ProposedGame $match): void
     {
         $this->matches[] = $match;
         $this->totalRating += $match->getRating();
@@ -47,7 +47,7 @@ class RoundMatching
     }
 
     /**
-     * @return ProposedMatch[]
+     * @return ProposedGame[]
      */
     public function getAllMatches(): array
     {

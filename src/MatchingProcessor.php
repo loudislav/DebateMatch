@@ -12,10 +12,7 @@ use DebateMatch\Factory\TeamFactory;
 // TODO: refactor
 class MatchingProcessor
 {
-    /**
-     * @var TeamFactory
-     */
-    private $teamFactory;
+    private TeamFactory $teamFactory;
 
     public function __construct()
     {

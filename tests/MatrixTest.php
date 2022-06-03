@@ -50,6 +50,6 @@ class MatrixTest extends TestCase
         $list = $matrix->getList();
 
         self::assertSame(2, count($list));
-        self::assertContainsOnlyInstancesOf('DebateMatch\DataObject\ProposedMatch', $list);
+        self::assertContainsOnlyInstancesOf('DebateMatch\DataObject\ProposedGame', $list);
     }
 }

@@ -6,19 +6,13 @@ namespace DebateMatch\DataObject;
 
 use DebateMatch\RatingCalculator;
 
-class ProposedMatch extends Match
+class ProposedGame extends Game
 {
-    /**
-     * @var RatingCalculator
-     */
-    private $ratingCalculator;
-    /**
-     * @var int
-     */
-    private $rating;
+    private RatingCalculator $ratingCalculator;
+    private int $rating;
 
     /**
-     * Match constructor.
+     * Game constructor.
      * @param Team $affirmative
      * @param Team $negative
      * @param int|null $oppositeSideRoundNumber
