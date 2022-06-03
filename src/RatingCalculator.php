@@ -18,6 +18,7 @@ class RatingCalculator
 
     /**
      * // TODO: maybe can be static
+     * // TODO: return flags (list of the broken rules)
      * @param Team $affirmative
      * @param Team $negative
      * @param int|null $oppositeSideRoundNumber

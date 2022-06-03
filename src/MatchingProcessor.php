@@ -21,6 +21,16 @@ class MatchingProcessor
 
     public function process(array $data, int $oppositeSideRoundNumber = null): array
     {
+        $teams = $this->createTeams($data);
+
+        $matrix = new Matrix($teams, $oppositeSideRoundNumber);
+        $proposedRoundMatchings = $this->getProposedRoundMatchings($matrix->getList(), count($teams));
+        var_dump($matrix->getList());
+        return $proposedRoundMatchings;
+    }
+
+    private function createTeams(array $data): array
+    {
         $teams = array();
         foreach ($data as $line) {
             $teams[] = $this->teamFactory->create($line);
@@ -31,10 +41,7 @@ class MatchingProcessor
                 $this->teamFactory->addPreviousMatches($data[$i]['previousMatches'], $teams[$i]);
             }
         }
-
-        $matrix = new Matrix($teams, $oppositeSideRoundNumber);
-        $proposedRoundMatchings = $this->getProposedRoundMatchings($matrix->getList(), count($teams));
-        return $proposedRoundMatchings;
+        return $teams;
     }
 
     private function getProposedRoundMatchings(array $listOfMatches, int $numberOfTeams): array

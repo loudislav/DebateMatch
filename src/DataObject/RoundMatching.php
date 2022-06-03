@@ -4,6 +4,16 @@ declare(strict_types=1);
 
 namespace DebateMatch\DataObject;
 
+/**
+ * Komplet předělat - neobsahuje všechna možná párování.
+ * Maximum weight matching in bipartite graph
+ * Possible solutions:
+ * - Hungarian algorithm
+ * - Hungarian algorithm with Bellman-Ford algorithm
+ * - Possibly Dijkstra algorithm using Fibonacci heap
+ * If not bipartite Edmonds' blossom algorithm
+ * Použít heuristiku a nepřidat hrany s vysokým skore / porušující pravidla
+ */
 class RoundMatching
 {
     /**
