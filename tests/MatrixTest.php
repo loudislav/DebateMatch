@@ -8,6 +8,9 @@ use DebateMatch\DataObject\Matrix,
     DebateMatch\Factory\TeamFactory;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * TODO: Add tests of new functions (getReducedMatrix, getAffirmativeXNegativeMatrix. getTotalAffirmativeRating, getTotalNegativeRating)
+ */
 class MatrixTest extends TestCase
 {
     protected $teams;

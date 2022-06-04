@@ -5,18 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1dc71be4-2e46-4d9e-966b-b21c0385d6a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataObject/ProposedGame.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataObject/ProposedGame.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataObject/RoundMatching.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataObject/RoundMatching.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/bin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataObject/Matrix.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataObject/Matrix.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MatchingProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/MatchingProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RatingCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/RatingCalculator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/MatrixTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MatrixTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -66,12 +67,32 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/DataObject" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\DebateMatch\src\DataObject" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHP Script.Matrix.php">
+    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Matrix.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/DataObject/Matrix.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.Matrix.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -82,6 +103,7 @@
       <option name="presentableId" value="Default" />
       <updated>1654256027845</updated>
       <workItem from="1654256029352" duration="8528000" />
+      <workItem from="1654365293737" duration="12799000" />
     </task>
     <servers />
   </component>
@@ -98,5 +120,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

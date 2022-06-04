@@ -24,8 +24,29 @@ class MatchingProcessor
         $teams = $this->createTeams($data);
 
         $matrix = new Matrix($teams, $oppositeSideRoundNumber);
-        $proposedRoundMatchings = $this->getProposedRoundMatchings($matrix->getList(), count($teams));
-        var_dump($matrix->getList());
+        foreach ($matrix->getList() as $item) {
+            echo $item->getAffirmative()->getName() . " " . $item->getNegative()->getName() . " " . $item->getRating() . "<br>";
+        }
+        $matrix = $matrix->getReducedMatrix();
+        $tmpMatrix = array();
+        for ($i = 0; $i < count($matrix); $i++) {
+            for ($j = 0; $j < count($matrix); $j++) {
+                if (null === $matrix[$i][$j]) {
+                    $tmpMatrix[$i][$j] = 1000;
+                } else {
+                    $tmpMatrix[$i][$j] = $matrix[$i][$j]->getRating();
+                }
+            }
+        }
+        var_dump($tmpMatrix);
+        $hungarian = new Hungarian($tmpMatrix);
+        $allocation = $hungarian->solveMin(true);
+        $proposedRoundMatchings = array();
+        foreach ($allocation as $key => $value)
+        {
+            $proposedRoundMatchings[] = $matrix[$key][$value];
+        }
+
         return $proposedRoundMatchings;
     }
 

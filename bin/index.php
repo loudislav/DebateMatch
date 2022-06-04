@@ -128,11 +128,11 @@ $matchingSet = $matchingProcessor->process($data, 1);
 echo "Bylo navrženo " . count($matchingSet) . " možných párování. Z toho " . count($matchingSet) . " optimálních.<br>";
 
 echo '<br><table border="1">';
-foreach ($matchingSet as $roundMatching)
+foreach ($matchingSet as $match)
 {
-    echo "<tr><td>".$roundMatching->getTotalRating()."</td>";
-    foreach ($roundMatching->getAllMatches() as $match)
-    {
+    echo "<tr><td>"/*.$roundMatching->getTotalRating()*/."</td>";
+    /*foreach ($roundMatching->getAllMatches() as $match)
+    {*/
         echo "<td>Aff: ";
         echo $match->getAffirmative()->getName();
         echo "<br />Neg: ";
@@ -140,7 +140,7 @@ foreach ($matchingSet as $roundMatching)
         echo "<br>Rating: ";
         echo $match->getRating();
         echo "</td>";
-    }
+    /*}*/
     echo "</tr>";
 }
 echo '</table>';
